@@ -14,83 +14,85 @@
         <h1 class="center Small_pizza">Perfect Pizza</h1>
         <h2 class="center">Pizza Orders</h2>
         <div class="Cart paying">
-            <h2>Shopping Cart</h2>
-            <ul>
-                <li>Large:R140.00
-                    <button @click="addPizza('large')">+</button>
-                    <button @click="removePizza('large')">-</button>
-                    <span x-text="largeCount"></span>
+            <div x-show="showCart" class="Cart paying">
+                <h2>Shopping Cart</h2>
+                <ul class="cart">
+                    <li>Large:R140.00
+                        <button @click="addPizza('large')">+</button>
+                        <button @click="removePizza('large')">-</button>
+                        <span x-text="largeCount"></span>
 
-                </li>
-                <li>Medium:R95.00
-                    <button @click="addPizza('medium')">+</button>
-                    <button @click="removePizza('medium')">-</button>
+                    </li>
+                    <li>Medium:R95.00
+                        <button @click="addPizza('medium')">+</button>
+                        <button @click="removePizza('medium')">-</button>
 
-                    <span x-text="mediumCount"></span>
-                </li>
-                <li>Small:R30.00
-                    <button @click="addPizza('small')">+</button>
-                    <button @click="removePizza('small')">-</button>
-                    <span x-text="smallCount"></span>
-                </li>
-            </ul>
-            <p>Total Cost: <span x-text="totalCost"></span></p>
-            <button x-show="largeCount > 0 || mediumCount > 0 || smallCount > 0" @click="checkout()">Checkout</button>
-            <div x-show="checkoutClicked" class="payment-section">
-                <p x-text="message" x-show="message !== ''" class="text"></p>
-                <label for="payment-amount">payment amount:</label>
-                <input type="number" id="payment-amount" placeholder="Enter amount" x-model.number="paymentAmount">
-                <button @click="pay">Pay</button>
-                <!-- Payment section -->
+                        <span x-text="mediumCount"></span>
+                    </li>
+                    <li>Small:R30.00
+                        <button @click="addPizza('small')">+</button>
+                        <button @click="removePizza('small')">-</button>
+                        <span x-text="smallCount"></span>
+                    </li>
+                </ul>
+                <p>Total Cost: <span x-text="totalCost"></span></p>
+                <button x-show="largeCount > 0 || mediumCount > 0 || smallCount > 0"
+                    @click="checkout()">Checkout</button>
+                <div x-show="checkoutClicked" class="payment-section">
+                    <p x-text="message" x-show="message !== ''" class="text"></p>
+                    <label for="payment-amount">payment amount:</label>
+                    <input type="number" id="payment-amount" placeholder="Enter amount" x-model.number="paymentAmount">
+                    <button @click="pay">Pay</button>
+                    <!-- Payment section -->
+                </div>
             </div>
         </div>
+        <h2 class="center">Pizza Cart</h2>
+        <div class="pizzas">
+            <div class="pizza Large_pizza">
+                <img src="images.png" width="200">
+                <h2>Large pizza</h2>
+                <h3>R140.00</h3>
+                <div>
+                    <ul>large margeritha pizza with 3 toppings max.3 meat toppings max.3 or less other toppings.</ul>
+                    <button @click="addPizza('large'); showCart()">Add to Cart</button>
+                </div>
+            </div>
+            <div class="pizza Medium_pizza">
+                <img src="images.png" width="150">
+                <h2>Medium Pizza</h2>
+                <h3>R95.00</h3>
+                <div>
+                    <ul>Medium chicken and mushroom pizza with 3 toppings max.2 or less meat toppings max.3 or less
+                        other
+                        toppings.</ul>
+                        <button @click="addPizza('medium'); showCart()">Add to Cart</button>
+                </div>
+            </div>
+            <div class="pizza Small_pizza">
+                <img src="images.png" width="100">
+                <h2>Small Pizza</h2>
+                <h3>R30.00</h3>
+                <div>
+                    <ul>Small BBQ pizza with 3 toppings max.1 meat topping.3 less or less other toppings.</ul>
+                    <button @click="addPizza('small'); showCart()">Add to Cart</button>
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <div class="pizza contact_details">
+            <h2>Contact details</h2>
+            <p> contact us at: 071 529 3662</p>
+            <p>instagram/facebook: talenthulela</p>
+            <p>website: info@perfectpizza.co.za</p>
+            <button class="btn btn-success"
+                onclick=" window.open('https://madlopatalent.github.io/perfect-pizza/')">Download App</button>
+        </div>
+        <script src="script.js"></script>
     </div>
-    <h2 class="center">Pizza Cart</h2>
-    <div class="pizzas">
-        <div class="pizza Large_pizza">
-            <img src="image.png" width="200">
-            <h2>Large pizza</h2>
-            <h3>R140.00</h3>
-            <div>
-                <ul>large margeritha pizza with 3 toppings max.3 meat toppings max.3 or less other toppings.</ul>
-                <button @click="addPizza('medium')">+</button>
-            </div>
-        </div>
-        <div class="pizza Medium_pizza">
-            <img src="image.png" width="150">
-            <h2>Medium Pizza</h2>
-            <h3>R95.00</h3>
-            <div>
-                <ul>Medium chicken and mushroom pizza with 3 toppings max.2 or less meat toppings max.3 or less
-                    other
-                    toppings.</ul>
-                <button @click="addPizza('medium')">Buy</button>
-
-            </div>
-        </div>
-        <div class="pizza Small_pizza">
-            <img src="image.png" width="100">
-            <h2>Small Pizza</h2>
-            <h3>R30.00</h3>
-            <div>
-                <ul>Small BBQ pizza with 3 toppings max.1 meat topping.3 less or less other toppings.</ul>
-                <button @click="addPizza('small')">Buy</button>
-            </div>
-
-
-        </div>
-
-    </div>
-
-    <div class="pizza contact_details">
-        <h2>Contact details</h2>
-        <p> contact us at: 071 529 3662</p>
-        <p>instagram/facebook: talenthulela</p>
-        <p>website: info@perfectpizza.co.za</p>
-        <button class="btn btn-success"
-            onclick=" window.open('https://madlopatalent.github.io/perfect-pizza/')">Download App</button>
-    </div>
-    <script src="script.js"></script>
 </body>
 
 </html>

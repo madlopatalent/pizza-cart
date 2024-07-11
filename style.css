@@ -81,8 +81,9 @@ body {
 .contact_details {
     margin-top: 40px;
 }
-.text{
-font-size: x-large;
+
+.text {
+    font-size: x-large;
 }
 
 button {
@@ -92,4 +93,10 @@ button {
     border-radius: 5px;
     cursor: pointer;
     margin-top: 10px;
+}
+
+.contact_details {
+    background-image: url(image.png);
+    background-repeat: no-repeat;
+    background-position: center;
 }
